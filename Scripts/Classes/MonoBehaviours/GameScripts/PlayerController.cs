@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -48,6 +49,11 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0, movementX * Time.deltaTime * rotationSpeed, 0);
         if (movementY > 0)
             controller.Move(transform.forward * speed * Time.deltaTime * movementY);
+    }
+
+    internal void PlayCelebrationAnim()
+    {
+        animator.SetBool("Celebrate", true);
     }
 
     public void PlayHitAnimation()

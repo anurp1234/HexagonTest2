@@ -15,9 +15,20 @@ public class SceneCreator: MonoBehaviour
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded/ totalObjectsToLoad);
 
-        yield return StartCoroutine(LoadSceneObject(info.playerCharacterPath));
+       
+        GameObject playerChar = GameObject.Instantiate((GameObject)Resources.Load(info.playerCharacterPath));
+        PlayerController controller = playerChar.GetComponent<PlayerController>();
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
+        yield return new WaitForSeconds(0.2f);
+
+      
+        GameObject gameSessionGO = GameObject.Instantiate((GameObject)Resources.Load(info.gameSessionPath));
+        GameSession session = gameSessionGO.GetComponent<GameSession>();
+        session.controller = controller;
+        objectsLoaded++;
+        factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
+        yield return new WaitForSeconds(0.2f);
 
         yield return StartCoroutine(LoadSceneObject(info.levelCreatorPath));
         objectsLoaded++;
@@ -27,9 +38,7 @@ public class SceneCreator: MonoBehaviour
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
 
-        yield return StartCoroutine(LoadSceneObject(info.gameSessionPath));
-        objectsLoaded++;
-        factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
+      
        
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
         yield return new WaitForSeconds(0.1f);

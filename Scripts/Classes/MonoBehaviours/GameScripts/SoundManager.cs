@@ -4,7 +4,8 @@ using UnityEngine;
 public enum SFXType
 {
     COLLECT,
-    PLAYERHIT
+    PLAYERHIT,
+    CELEBRATION
 }
 
 [System.Serializable]
@@ -32,6 +33,9 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
 
     [SerializeField]
     List<AudioClip> footStepSounds;
+
+    [SerializeField]
+    AudioClip buttonClickSnd;
 
     bool isFootStepSoundPlaying = false;
     int currrentFootStepSoundsIdx = 0;
@@ -88,6 +92,15 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
         stepsSoundChannel.Stop();
     }
 
+    public void PlayButtonClickSound()
+    {
+        AudioSource audioSource = GetFreeAudioSource();
+        Debug.Assert(audioSource != null, "No audiosource is free");
+        audioSource.clip = buttonClickSnd;
+        audioSource.Play();
+
+    }
+
     public void PlaySFX(SFXType sfxType)
     {
         AudioClip clip = GetAudioClip(sfxType);
@@ -96,6 +109,16 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
         Debug.Assert(audioSource != null, "No audiosource is free");
         audioSource.clip = clip;
         audioSource.Play();
+    }
+
+    public void OnEnable()
+    {
+        soundEvents.RegisterEventListener(this);
+    }
+
+    public void OnDisable()
+    {
+        soundEvents.UnRegisterEventListener(this);
     }
 
     private AudioSource GetFreeAudioSource()
@@ -108,7 +131,7 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
         return null;
     }
 
-    private AudioClip GetAudioClip(SFXType sfxType)
+     AudioClip GetAudioClip(SFXType sfxType)
     {
         foreach (SFXInfo mapping in sfxMapping)
         {
@@ -118,13 +141,6 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
         return null;
     }
 
-    public void OnEnable()
-    {
-        soundEvents.RegisterEventListener(this);
-    }
 
-    public void OnDisable()
-    {
-        soundEvents.UnRegisterEventListener(this);
-    }
+   
 }

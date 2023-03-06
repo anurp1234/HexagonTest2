@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /*
@@ -15,7 +16,24 @@ public class GameSession : MonoBehaviour, IEventListener
     [SerializeField]
     ScoreEvent onTotalScoreUpdate;
 
+    [SerializeField]
+    SoundEvents soundEvent;
+
+    [SerializeField]
+    int celebrationScore = 800;
+
+    [SerializeField]
+    GameObject confettiParticle;
+
+    [SerializeField]
+    float confettiOffset = 2;
+
     int totalScore;
+
+    bool isCelebrated;
+
+    public PlayerController controller;
+    
 
     public void OnEnable()
     {
@@ -31,5 +49,18 @@ public class GameSession : MonoBehaviour, IEventListener
     {
         totalScore += score;
         onTotalScoreUpdate.Raise(totalScore);
+        if(totalScore >= celebrationScore && !isCelebrated)
+        {
+            isCelebrated = true;
+            soundEvent.RaiseSFXEvent(SFXType.CELEBRATION);
+            controller.PlayCelebrationAnim();
+            CreateConfetti();
+        }
+    }
+
+     void CreateConfetti()
+    {
+        GameObject confetti = GameObject.Instantiate(confettiParticle);
+        confetti.transform.position = controller.transform.position + new Vector3(0, confettiOffset, 0);
     }
 }

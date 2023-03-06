@@ -46,3 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onScoreUpdate: {fileID: 11400000, guid: 4702efc1c6d152543885653a4cbe7feb, type: 2}
   onTotalScoreUpdate: {fileID: 11400000, guid: 03ee3f2d98221744c82eeab79cbfa096, type: 2}
+  soundEvent: {fileID: 11400000, guid: 277b9ca131c122547b267c06849fee60, type: 2}
+  celebrationScore: 500
+  confettiParticle: {fileID: 7194952087870367276, guid: a56fa166c27c1b64a90204cdc43a72fd, type: 3}
+  controller: {fileID: 0}
