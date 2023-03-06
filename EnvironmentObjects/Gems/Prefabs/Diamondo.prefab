@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pScoreIncrement: 100
+  particleEffect: {fileID: 1912731163003908, guid: c5febdd93ab44d640b3eb37b768360bb, type: 3}
 --- !u!114 &-5778873460701054355
 MonoBehaviour:
   m_ObjectHideFlags: 0

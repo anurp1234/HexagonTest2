@@ -13,6 +13,8 @@ public class CollisionProcessor : Singleton<CollisionProcessor>
 {
     public ScoreEvent scoreEvent;
 
+    public SoundEvents soundEvents;
+
     List<ICollissionProcessor> collisionProcessors;
     void Start()
     {
@@ -46,12 +48,24 @@ public class PlayerCollisionProcessor : ICollissionProcessor
         if (a is PlayerCollissionContext || b is PlayerCollissionContext)
         {
             ICollisionContext other = a is PlayerCollissionContext ? b : a;
+            ICollisionContext playerContext = a is PlayerCollissionContext ? a : b;
             if (other is GemCollissionContext)
             {
                 GemCollissionContext gemContext = null;
                 gemContext = (GemCollissionContext)other;
+                GameObject particleGO = GameObject.Instantiate(gemContext.particleEffect);
+                particleGO.transform.position = gemContext.gameObject.transform.position;
                 GameObject.Destroy(gemContext.gameObject);
                 processor.scoreEvent.Raise(gemContext.scoreIncrement);
+                processor.soundEvents.RaiseSFXEvent(SFXType.COLLECT);
+            }
+            else if (other is ObstacleCollisionContext)
+            {
+                PlayerController playerController = ((PlayerCollissionContext)playerContext).controller;
+               
+                processor.soundEvents.RaiseSFXEvent(SFXType.PLAYERHIT);
+
+                playerController.PlayHitAnimation();
             }
             else if (other is IgnoreCollisionContext)
             {

@@ -12,8 +12,7 @@ public struct LoaderFactoryInfo
 
     public string gameSessionPath { get; private set; }
 
-    public string soundManagerPath { get; private set; }
-    public LoaderFactoryInfo(string environmentPath, string playerCharacterPath, string collisionProcessorPath,string levelCreatorPath, string gameSessionPath, string soundManagerPath)
+    public LoaderFactoryInfo(string environmentPath, string playerCharacterPath, string collisionProcessorPath,string levelCreatorPath, string gameSessionPath)
     {
         this.environmentPath = environmentPath;
 
@@ -25,7 +24,6 @@ public struct LoaderFactoryInfo
 
         this.gameSessionPath = gameSessionPath;
 
-        this.soundManagerPath = soundManagerPath;
       }
 }
 public class LevelFactory : MonoBehaviour
@@ -46,14 +44,11 @@ public class LevelFactory : MonoBehaviour
     string gameSessionPath;
 
     [SerializeField]
-    string soundManagerPath;
-
-    [SerializeField]
     Slider loadingBar;
 
     public void CreateLevel()
     {
-        LoaderFactoryInfo info = new LoaderFactoryInfo(EnvironmentPath, playerCharacterPath, collisionProcessorPath, levelCreatorPath, gameSessionPath, soundManagerPath);
+        LoaderFactoryInfo info = new LoaderFactoryInfo(EnvironmentPath, playerCharacterPath, collisionProcessorPath, levelCreatorPath, gameSessionPath);
         GameObject sceneCreatorGO = new GameObject("SceneCreator");
         SceneCreator sceneCreator = sceneCreatorGO.AddComponent<SceneCreator>();
         StartCoroutine( sceneCreator.LoadScene(this,info));

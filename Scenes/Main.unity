@@ -434,7 +434,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 265.72, y: 278.6}
+  m_SizeDelta: {x: 550, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253109085
 MonoBehaviour:
@@ -511,6 +511,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1687584818}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -680,6 +692,63 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1001 &367260784
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 136877980629413179, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.122036
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5341383
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.986062
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8645959628477878106, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b48a811a29893845abe401390a36a22, type: 3}
 --- !u!1 &953751711
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,6 +1178,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1687584818 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 136877980629413179, guid: 1b48a811a29893845abe401390a36a22, type: 3}
+  m_PrefabInstance: {fileID: 367260784}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1831464173
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,7 +1293,6 @@ MonoBehaviour:
   collisionProcessorPath: CollisionProcessor
   levelCreatorPath: LevelLoader
   gameSessionPath: GameSession
-  soundManagerPath: SoundManager
   loadingBar: {fileID: 318057210}
 --- !u!4 &1925087374
 Transform:

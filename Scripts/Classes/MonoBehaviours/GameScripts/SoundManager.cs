@@ -1,16 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public enum SFXType
 {
-    COLLECT
+    COLLECT,
+    PLAYERHIT
 }
 
 [System.Serializable]
-public struct SFXInfo{
-
+public struct SFXInfo
+{
     public SFXType sfxType;
     public AudioClip audioClip;
 }
@@ -46,17 +45,16 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
         {
             totalFootStepsCount = footStepSounds.Count;
         }
+        PlayBkgMusic();
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
     {
-        //Debug.Log("Soundmanager update");
         if (isFootStepSoundPlaying)
         {
-            //Debug.Log("Soundmanager update stepsSoundChannel.time"+ stepsSoundChannel.time + "currentClipLength = "+ currentClipLength);
             if (Mathf.Abs(stepsSoundChannel.time - currentClipLength) < 0.1)
             {
-                
                 currrentFootStepSoundsIdx = currrentFootStepSoundsIdx % totalFootStepsCount;
                 AudioClip audioClip = footStepSounds[currrentFootStepSoundsIdx];
                 currrentFootStepSoundsIdx++;
@@ -79,7 +77,6 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
 
     public void PlayFootStepsSound()
     {
-        //Debug.Log("Play foot step sound");
         isFootStepSoundPlaying = true;
         stepsSoundChannel.Play();
         currentClipLength = stepsSoundChannel.clip.length;
@@ -87,14 +84,38 @@ public class SoundManager : MonoBehaviour, ISoundEventListener
 
     public void StopFootStepsSound()
     {
-        //Debug.Log("Stop foot step sound");
         isFootStepSoundPlaying = false;
         stepsSoundChannel.Stop();
     }
 
     public void PlaySFX(SFXType sfxType)
-    { 
+    {
+        AudioClip clip = GetAudioClip(sfxType);
+        Debug.Assert(clip != null, "No audioclip for type " + sfxType.ToString());
+        AudioSource audioSource = GetFreeAudioSource();
+        Debug.Assert(audioSource != null, "No audiosource is free");
+        audioSource.clip = clip;
+        audioSource.Play();
+    }
 
+    private AudioSource GetFreeAudioSource()
+    {
+        foreach (AudioSource source in sfxChannels)
+        {
+            if (source.isPlaying == false)
+                return source;
+        }
+        return null;
+    }
+
+    private AudioClip GetAudioClip(SFXType sfxType)
+    {
+        foreach (SFXInfo mapping in sfxMapping)
+        {
+            if (mapping.sfxType == sfxType)
+                return mapping.audioClip;
+        }
+        return null;
     }
 
     public void OnEnable()

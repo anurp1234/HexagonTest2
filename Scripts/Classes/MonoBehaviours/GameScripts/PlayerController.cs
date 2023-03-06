@@ -33,17 +33,14 @@ public class PlayerController : MonoBehaviour
         
         if (movementY > 0 && !isMoving)
         {
-           // Debug.Log("Moving");
             isMoving = true;
             soundEvent.RaiseFootStepsEvent();
         }
         else if(movementY == 0)
         {
-            //Debug.Log("Not Moving");
             isMoving = false;
             soundEvent.RaiseFootStepsStopEvent();
         }
-            
     }
 
     void Update()
@@ -51,5 +48,10 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(0, movementX * Time.deltaTime * rotationSpeed, 0);
         if (movementY > 0)
             controller.Move(transform.forward * speed * Time.deltaTime * movementY);
+    }
+
+    public void PlayHitAnimation()
+    {
+        animator.SetBool("isHit", true);
     }
 }

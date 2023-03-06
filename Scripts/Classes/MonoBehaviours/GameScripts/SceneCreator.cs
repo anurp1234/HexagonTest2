@@ -8,35 +8,38 @@ public class SceneCreator: MonoBehaviour
 
     public IEnumerator LoadScene(LevelFactory factory,LoaderFactoryInfo info)
     {
-        int totalObjectsToLoad = 6;
+        int totalObjectsToLoad = 5;
         int objectsLoaded = 0;
-        GameObject.Instantiate((GameObject)Resources.Load(info.environmentPath));
+        
+        yield return StartCoroutine(LoadSceneObject(info.environmentPath));
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded/ totalObjectsToLoad);
-        yield return new WaitForSeconds(0.1f);
-        GameObject.Instantiate((GameObject)Resources.Load(info.playerCharacterPath));
+
+        yield return StartCoroutine(LoadSceneObject(info.playerCharacterPath));
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
-        yield return new WaitForSeconds(0.1f);
-        GameObject.Instantiate((GameObject)Resources.Load(info.levelCreatorPath));
+
+        yield return StartCoroutine(LoadSceneObject(info.levelCreatorPath));
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
-        yield return new WaitForSeconds(0.1f);
-        GameObject.Instantiate((GameObject)Resources.Load(info.collisionProcessorPath));
+
+        yield return StartCoroutine(LoadSceneObject(info.collisionProcessorPath));
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
-        yield return new WaitForSeconds(0.1f);
-        GameObject.Instantiate((GameObject)Resources.Load(info.gameSessionPath));
+
+        yield return StartCoroutine(LoadSceneObject(info.gameSessionPath));
         objectsLoaded++;
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
-        yield return new WaitForSeconds(0.1f);
-        GameObject snManagerGO = GameObject.Instantiate((GameObject)Resources.Load(info.soundManagerPath));
-        SoundManager soundManager = snManagerGO.GetComponent<SoundManager>();
-        soundManager.PlayBkgMusic();
-        objectsLoaded++;
+       
         factory.UpdateLoadingProgress((float)objectsLoaded / totalObjectsToLoad);
         yield return new WaitForSeconds(0.1f);
         factory.OnLoadingComplete();
         GameObject.Destroy(gameObject);
+    }
+
+    IEnumerator LoadSceneObject(string path)
+    {
+        GameObject.Instantiate((GameObject)Resources.Load(path));
+        yield return new WaitForSeconds(0.2f);
     }
 }

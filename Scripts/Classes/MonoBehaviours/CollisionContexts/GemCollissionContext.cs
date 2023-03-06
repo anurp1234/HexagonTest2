@@ -9,6 +9,8 @@ public class GemCollissionContext : MonoBehaviour, ICollisionContext
 {
     [SerializeField]
     int pScoreIncrement;
+
+    public GameObject particleEffect;
     public int scoreIncrement
     {
         get

@@ -51,7 +51,7 @@ MonoBehaviour:
   soundEvents: {fileID: 11400000, guid: 277b9ca131c122547b267c06849fee60, type: 2}
   sfxMapping:
   - sfxType: 0
-    audioClip: {fileID: 0}
+    audioClip: {fileID: 8300000, guid: 24626442cd625d74ea39612d9db7d49f, type: 3}
   bkgMusicChannel: {fileID: 5671594631006467612}
   stepsSoundChannel: {fileID: 8712696306997777347}
   sfxChannels:
