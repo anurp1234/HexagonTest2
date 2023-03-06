@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4397742329076923034}
   - component: {fileID: 4397742329095188026}
   - component: {fileID: 5762718333382457986}
-  - component: {fileID: 2728830348883670180}
+  - component: {fileID: 8110692204310803494}
   m_Layer: 0
   m_Name: RockChunk01
   m_TagString: Untagged
@@ -160,7 +160,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.6471252, y: 9.958144, z: 14.072553}
   m_Center: {x: 0.10811806, y: 2.928907, z: -0.00012218952}
---- !u!114 &2728830348883670180
+--- !u!114 &8110692204310803494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4397742329076885178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b3dcecc55c93e4a8d12a59248ead53, type: 3}
+  m_Script: {fileID: 11500000, guid: e0fe6ec2f5ba87a42a23e81d25ac9452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4397742329076885180

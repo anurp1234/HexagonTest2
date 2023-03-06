@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1689649173455932689}
   - component: {fileID: 1689649173454835665}
   - component: {fileID: -3549483575245275920}
-  - component: {fileID: -1277946097963805880}
+  - component: {fileID: -6892661938224289998}
   m_Layer: 0
   m_Name: SmallRock03
   m_TagString: Untagged
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.42965016, y: 0.24552885, z: 0.28778577}
   m_Center: {x: -0.01674357, y: 0.017405625, z: -0.010688201}
---- !u!114 &-1277946097963805880
+--- !u!114 &-6892661938224289998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,6 +107,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1689649173456769297}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38b3dcecc55c93e4a8d12a59248ead53, type: 3}
+  m_Script: {fileID: 11500000, guid: e0fe6ec2f5ba87a42a23e81d25ac9452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

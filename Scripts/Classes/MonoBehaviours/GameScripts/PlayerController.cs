@@ -52,6 +52,6 @@ public class PlayerController : MonoBehaviour
 
     public void PlayHitAnimation()
     {
-        animator.SetBool("isHit", true);
+        animator.SetBool("IsHit", true);
     }
 }

@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab87387da08d7ca44bf1c50a3f79daf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pframesToSkipOnplayerCollision: 60
   scoreEvent: {fileID: 11400000, guid: 4702efc1c6d152543885653a4cbe7feb, type: 2}
   soundEvents: {fileID: 11400000, guid: 277b9ca131c122547b267c06849fee60, type: 2}

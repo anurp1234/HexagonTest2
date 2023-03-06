@@ -44,7 +44,7 @@ public class LevelFactory : MonoBehaviour
     string gameSessionPath;
 
     [SerializeField]
-    Slider loadingBar;
+    ClassicProgressBar loadingBar;
 
     public void CreateLevel()
     {
@@ -56,7 +56,7 @@ public class LevelFactory : MonoBehaviour
 
     public void UpdateLoadingProgress(float progress)
     {
-        loadingBar.value = progress;
+        loadingBar.m_FillAmount = progress;
     }
 
     public void OnLoadingComplete()
